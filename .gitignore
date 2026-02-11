@@ -1,0 +1,271 @@
+########################################
+# UNITY CORE
+########################################
+
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# Auto generated project files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Crash reports
+sysinfo.txt
+
+########################################
+# IDE
+########################################
+
+.vs/
+.consulo/
+.idea/
+.vscode/
+*.code-workspace
+
+########################################
+# ANDROID
+########################################
+
+.gradle/
+local.properties
+*.apk
+*.aab
+*.keystore
+*.jks
+
+########################################
+# IOS
+########################################
+
+Pods/
+Podfile.lock
+project.lock.json
+DerivedData/
+xcuserdata/
+*.mobileprovision
+*.p12
+
+########################################
+# FIREBASE (IMPORTANT)
+########################################
+
+# Firebase config files (SECRET)
+GoogleService-Info.plist
+google-services.json
+Assets/StreamingAssets/
+
+# Firebase resolver output
+# You can download the Firebase Unity SDK and run the resolver yourself to get these files.
+Assets/Firebase/
+Assets/Firebase/Plugins/Editor/*
+Assets/ExternalDependencyManager/*
+Assets/Plugins/Android/*
+Assets/Plugins/iOS/*
+
+# Keep base folders
+!Assets/Plugins/
+!Assets/ExternalDependencyManager/
+
+# Firebase generated metadata
+Assets/Firebase/*/*_manifest*.txt
+Assets/Firebase/*/*_manifest*.txt.meta
+Assets/Firebase/m2repository/
+Assets/Firebase/Plugins/x86_64/
+
+########################################
+# ADDRESSABLES
+########################################
+
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+########################################
+# IMMERSAL
+# WHEN YOU RUN THE IMMERSAL MAPPING TOOL, IT CREATES A CACHE FOLDER AND A TEMP FOLDER IN THE ASSETS/IMMERSAL FOLDER. THESE FOLDERS CAN GET VERY LARGE AND ARE NOT NECESSARY TO SHARE, SO THEY ARE IGNORED. IF YOU HAVE YOUR OWN MAP DATA FOLDER, YOU SHOULD ALSO ADD IT HERE TO IGNORE IT, AS IT CAN ALSO BE VERY LARGE AND IS NOT NECESSARY TO SHARE.
+########################################
+Assets/Immersal/
+
+########################################
+# BUILDS
+########################################
+
+ExportedObj/
+*.unitypackage
+*.app
+crashlytics-build.properties
+
+########################################
+# MACOS
+########################################
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+########################################
+# UNITY CORE
+########################################
+
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# Auto generated project files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Crash reports
+sysinfo.txt
+
+########################################
+# IDE
+########################################
+
+.vs/
+.consulo/
+.idea/
+.vscode/
+*.code-workspace
+
+########################################
+# ANDROID
+########################################
+
+.gradle/
+local.properties
+*.apk
+*.aab
+*.keystore
+*.jks
+
+########################################
+# IOS
+########################################
+
+Pods/
+Podfile.lock
+project.lock.json
+DerivedData/
+xcuserdata/
+*.mobileprovision
+*.p12
+
+########################################
+# FIREBASE (IMPORTANT)
+########################################
+
+# Firebase config files (SECRET)
+GoogleService-Info.plist
+google-services.json
+
+# Firebase resolver output
+Assets/Firebase/Plugins/Editor/*
+Assets/ExternalDependencyManager/*
+Assets/Plugins/Android/*
+Assets/Plugins/iOS/*
+Assets/Plugins/tvOS/*
+
+# Keep base folders
+!Assets/Plugins/
+!Assets/ExternalDependencyManager/
+
+# Firebase generated metadata
+Assets/Firebase/*/*_manifest*.txt
+Assets/Firebase/*/*_manifest*.txt.meta
+Assets/Firebase/m2repository/
+Assets/Firebase/Plugins/x86_64/
+Assets/StreamingAssets/google-services*.json
+
+########################################
+# ADDRESSABLES
+########################################
+
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+########################################
+# IMMERSAL
+# YOU SHOULD ADD YOUR OWN MAP DATA FOLDER HERE, AS IT CAN BE VERY LARGE AND IS NOT NECESSARY TO SHARE
+########################################
+
+Assets/Immersal/Cache/
+Assets/Immersal/Temp/
+Assets/Map Data/  
+
+########################################
+# BUILDS
+########################################
+
+ExportedObj/
+*.unitypackage
+*.app
+crashlytics-build.properties
+
+########################################
+# MACOS
+########################################
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+########################################
+# LICENSED UNITY ASSETS
+# I ALREADY ADDED LINKS TO THE ASSETS IN THE README, SO YOU CAN DOWNLOAD THEM YOURSELF IF YOU WANT TO USE THEM. THEY ARE NOT NECESSARY TO RUN THE PROJECT, BUT THEY ARE USED IN THE SCENES AND MAY CAUSE ERRORS IF THEY ARE MISSING.
+########################################
+
+Assets/Gabies_Assets/
+Assets/Game Assets/
+Assets/money pack/
+Assets/PKS_Laptoplow/
+Assets/Low Poly Stylized Knife Pack/
+Assets/CiroContinisio/
+Assets/Books/
+
+# You can import the TextMesh Pro package.
+Assets/TextMesh Pro/ 
