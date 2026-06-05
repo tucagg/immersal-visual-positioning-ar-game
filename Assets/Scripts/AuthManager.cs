@@ -33,7 +33,9 @@ public class AuthManager : MonoBehaviour
 
     [Header("Game Roots")]
     public GameObject gameRoot;           // XR, Immersal vs.
-    public GameObject adminUiRoot;        // Admin panel Canvas (isteğe bağlı)
+    public GameObject screensRoot;        // ScreensRoot — login öncesi gizlenir
+    public GameObject bottomBar;          // BottomBar — login öncesi gizlenir
+    public GameObject adminUiRoot;        // Admin panel Canvas (isteğe bağlı, None bırakılabilir)
 
     [Header("Logout UI")]
     public GameObject logoutButtonRoot;   // Logout butonunun (veya parent'ının) root'u
@@ -70,6 +72,11 @@ public class AuthManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Her şeyi gizle — TryInit Firebase hazır olunca doğru paneli açar.
+        if (screensRoot != null) screensRoot.SetActive(false);
+        if (gameRoot    != null) gameRoot.SetActive(false);
+        if (authPanel   != null) authPanel.SetActive(false);
     }
     #endregion
 
@@ -381,6 +388,7 @@ public class AuthManager : MonoBehaviour
                 ShowAuthUi(false);
                 if (gameRoot) gameRoot.SetActive(true);
                 ClearStatus();
+
             });
     }
 
@@ -394,15 +402,26 @@ public class AuthManager : MonoBehaviour
 
         bool isAdmin = (role == "admin");
 
+        var appUI = FindFirstObjectByType<AppUIManager>();
+        if (appUI != null)
+        {
+            appUI.SetAdminButtonVisible(isAdmin);
+        }
+
         if (anchorsRealtime != null)
         {
             anchorsRealtime.adminMode = isAdmin;
             Debug.Log("[Auth] anchors.adminMode = " + anchorsRealtime.adminMode);
+
+            if (anchorsRealtime.mapRootProvider != null)
+                anchorsRealtime.mapRootProvider.isAdminMode = isAdmin;
         }
 
         if (adminUiRoot != null)
         {
-            adminUiRoot.SetActive(isAdmin);
+            // Legacy admin UI root. The new admin flow uses Panel_Admin through AppUIManager.
+            // Keep this disabled unless you still use the old AdminMenuUI overlay.
+            adminUiRoot.SetActive(false);
         }
     }
 
@@ -410,13 +429,10 @@ public class AuthManager : MonoBehaviour
 
     void ShowAuthUi(bool show)
     {
-        if (authPanel) authPanel.SetActive(show);
-
-        // Auth ekranı açıksa logout görünmemeli; oyuna geçince görünmeli
-        if (logoutButtonRoot != null)
-        {
-            logoutButtonRoot.SetActive(!show);
-        }
+        if (authPanel)    authPanel.SetActive(show);
+        if (screensRoot)  screensRoot.SetActive(!show);
+        if (bottomBar)    bottomBar.SetActive(!show);
+        if (logoutButtonRoot) logoutButtonRoot.SetActive(!show);
     }
 
     void ShowModeSelect()

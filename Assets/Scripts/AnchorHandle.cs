@@ -7,7 +7,6 @@ public class AnchorHandle : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     public string anchorId;
 
     private AnchorsRealtime anchors;
-    private AdminMenuUI adminMenu;
 
     private Camera _cam;
     private Plane _dragPlane;
@@ -17,7 +16,6 @@ public class AnchorHandle : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
     void Awake()
     {
         anchors = Object.FindFirstObjectByType<AnchorsRealtime>();
-        adminMenu = Object.FindFirstObjectByType<AdminMenuUI>();
         _cam = Camera.main;
     }
     public void OnPointerClick(PointerEventData eventData)
@@ -25,7 +23,9 @@ public class AnchorHandle : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
         if (anchors == null || string.IsNullOrEmpty(anchorId))
             return;
 
-        if (anchors.adminMode)
+        // Route through creator/admin handler when admin mode is active OR
+        // when any edit mode is on (so map creators can interact with their anchors).
+        if (anchors.adminMode || anchors.IsInAnyEditMode())
         {
             anchors.OnAnchorClickedAsAdmin(anchorId);
         }
@@ -37,9 +37,12 @@ public class AnchorHandle : MonoBehaviour, IPointerClickHandler, IBeginDragHandl
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        // Sadece admin ve EditClues modundayken sürüklenebilsin
-        if (anchors == null || !anchors.adminMode || !anchors.IsInEditCluesMode()) return;
+        // EditClues modundayken sürüklenebilsin (admin veya creator fark etmez)
+        if (anchors == null || !anchors.IsInEditCluesMode()) return;
         if (_cam == null) _cam = Camera.main;
+
+        // Notify AnchorsRealtime which anchor is active so two-finger rotation knows what to rotate.
+        anchors.SetActiveDragAnchor(anchorId);
 
         // Objeden geçen, kameraya bakan bir düzlem oluştur
         _dragPlane = new Plane(-_cam.transform.forward, transform.position);
