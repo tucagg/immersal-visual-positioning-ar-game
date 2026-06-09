@@ -53,4 +53,4 @@ After downloading, place the imported asset folders inside the project's `Assets
 
 Detailed technical documentation and system design:
 
-👉 [Project Documentation (PDF)](https://drive.google.com/file/d/1oGBOBt40xwCH9or90UKgqlApmVt_wbPX/view)
+👉 [Project Documentation (PDF)](https://drive.google.com/file/d/1_kBqJC2LjE17_T3sFgz2HIS3rYQngwai/view?usp=share_link)
