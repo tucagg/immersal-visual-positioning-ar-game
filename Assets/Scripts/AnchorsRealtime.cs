@@ -162,6 +162,10 @@ public class AnchorsRealtime : MonoBehaviour
 
     [Header("Admin")]
     public bool adminMode = false;
+
+    /// <summary>True while Screen_EditClueLocAR is open. Shows all anchors regardless of progression.</summary>
+    [HideInInspector] public bool creatorEditSession = false;
+
     private bool _linkMode = false;
     private bool _deleteMode = false;
     private string _pendingLinkAnchorId = null;
@@ -1902,8 +1906,8 @@ public class AnchorsRealtime : MonoBehaviour
     {
         if (meta == null) return false;
 
-        // Admin OR creator edit mode: show all DB-visible anchors, no unlock gating
-        if (adminMode || IsInAnyEditMode()) return meta.visible;
+        // Admin OR creator edit session: show all DB-visible anchors, no unlock gating
+        if (adminMode || creatorEditSession || IsInAnyEditMode()) return meta.visible;
 
         // Base visibility flag from DB
         if (!meta.visible) return false;
@@ -1912,11 +1916,11 @@ public class AnchorsRealtime : MonoBehaviour
         return meta.clueIndex <= _unlockedClueIndex;
     }
 
-    private void RefreshAllVisibility()
+    public void RefreshAllVisibility()
     {
         // Ensure unlockedIndex is up to date (anchors might have changed).
-        // Skip in admin or creator edit mode — all anchors are shown unconditionally.
-        if (!adminMode && !IsInAnyEditMode())
+        // Skip in admin or creator edit session — all anchors are shown unconditionally.
+        if (!adminMode && !creatorEditSession && !IsInAnyEditMode())
             _unlockedClueIndex = ComputeUnlockedIndex();
 
         foreach (var kv in _spawned)
@@ -1931,8 +1935,8 @@ public class AnchorsRealtime : MonoBehaviour
     }
     private void UpdateProgressUI()
     {
-        // Hide progress bar for admins and for creators in edit mode
-        bool show = !adminMode && !IsInAnyEditMode();
+        // Hide progress bar for admins and for creators in edit session
+        bool show = !adminMode && !creatorEditSession && !IsInAnyEditMode();
 
         if (progressRoot != null)
             progressRoot.SetActive(show);

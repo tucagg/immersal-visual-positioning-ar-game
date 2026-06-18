@@ -35,16 +35,22 @@ public class EditClueLocARUI : MonoBehaviour
         Wire(); // wire every time so listeners are always fresh
         ApplyMode(EditMode.None);
         if (anchors != null)
+        {
             anchors.OnDeleteModeExited += OnDeleteModeExitedExternally;
+            anchors.creatorEditSession = true;
+            anchors.RefreshAllVisibility();
+        }
     }
 
     void OnDisable()
     {
         if (anchors != null)
         {
+            anchors.creatorEditSession = false;
             anchors.ExitEditModes();
             anchors.ExitDeleteMode();
             anchors.OnDeleteModeExited -= OnDeleteModeExitedExternally;
+            anchors.RefreshAllVisibility();
         }
     }
 
