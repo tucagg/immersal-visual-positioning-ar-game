@@ -49,8 +49,35 @@ After downloading, place the imported asset folders inside the project's `Assets
 
 ---
 
+## Developer Notes
+
+### Adding a New Clue Prefab
+
+When you create a new clue object type (e.g. `KeyCluePrefab`, `NoteCluePrefab`), follow these steps so it becomes tappable and draggable in the AR editing session:
+
+1. Open the prefab in **Prefab Edit Mode** (double-click it in the Project window).
+2. Make sure the root `GameObject` has a **Collider** component (e.g. `BoxCollider`). Without a collider, pointer events will not fire.
+3. Add the **`AnchorHandle`** script to the same `GameObject`: `Inspector → Add Component → AnchorHandle`.
+4. Match the **layer and tag** of the root object to those used by `CubeCluePrefab` (the reference prefab that already works).
+5. Save the prefab.
+6. In the scene, select the **`ImmersalSDK`** root object and find the **`AnchorsRealtime`** component. Add the new prefab to its **prefab list** (the slot that holds the pool of spawnable clue prefabs).
+7. Open the **clue type dropdown** in the clue editing UI (`Screen_EditClue`) and add a matching entry for the new prefab key so creators can select it from the dropdown.
+
+---
+
+### Adding a New Immersal Map
+
+To register a new physical environment so the app can localize inside it:
+
+1. Under **`XRSpace`** in the scene hierarchy, find an existing `XRMap_*` object (the one that contains an **`XR Map`** script component). **Duplicate** it (`Ctrl/Cmd + D`).
+2. Select the duplicate. In the `XR Map` component in the Inspector, click **Reconfigure**, enter the new map's **Immersal Map ID**, and enable all three checkboxes as needed. You can remove (or leave unchecked) the **Visualization** mesh — it is only needed during development.
+3. **Important:** The **`GameRoot`** (i.e. the `ImmersalSDK` root object in the scene) must be **active** in the hierarchy while you configure the map. If it is disabled, the SDK cannot reach its credentials and the reconfigure step will fail.
+4. If prompted, download the map data from the [Immersal Developer Portal](https://developers.immersal.com) and place it in the expected assets folder before reconfiguring.
+
+---
+
 ## Documentation
 
 Detailed technical documentation and system design:
 
-👉 [Project Documentation (PDF)](https://drive.google.com/file/d/1_kBqJC2LjE17_T3sFgz2HIS3rYQngwai/view?usp=share_link)
+[Project Documentation (PDF)](https://drive.google.com/file/d/1_kBqJC2LjE17_T3sFgz2HIS3rYQngwai/view?usp=share_link)
