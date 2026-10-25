@@ -1,5 +1,13 @@
 # Immersal Visual Positioning AR Game
 
+### Quick Demo – Core Gameplay Concept
+
+A short demonstration of the project's core concept: a location-based AR detective game that uses visual positioning to place interactive virtual clues in real-world environments.
+
+**[▶ Watch the Demo on YouTube](https://youtu.be/ldONPSsbhEY)**
+
+---
+
 A location-based augmented reality application that leverages **Immersal Visual Positioning System (VPS)** to enable persistent, spatially accurate virtual content anchored to real-world environments.
 
 ---
