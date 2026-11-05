@@ -4,7 +4,7 @@
 
 A short demonstration of the project's core concept: a location-based AR detective game that uses visual positioning to place interactive virtual clues in real-world environments.
 
-**[▶ Watch the Demo on YouTube](https://youtu.be/ldONPSsbhEY)**
+**[▶ Watch the Demo on YouTube](https://youtu.be/9qApf5Z14ig)**
 
 ---
 
